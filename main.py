@@ -33,6 +33,44 @@ print(dico(URL_CSV))
 
 
 """ CODE """
+
+#DEFINITION DE LA CALSSE CAMION
+ #calcul position initiale des camions 
+X_clients = 0
+Y_clients = 0
+for client in D:
+    X_clients += float(client['coord_x'])
+    Y_clients +=float(client['coord_y'])
+X_clients = X_clients/len(lignes)
+Y_clients = Y_clients/len(lignes)
+
+X0_camion = X_clients
+Y0_camion = Y_clients
+
+
+class camion :
+    def __init__(self,position,nb_bouteilles_vides,nb_bouteilles_pleines,en_chemin):
+
+        self.postion = position
+        self.nb_bouteilles_vides = nb_bouteilles_vides
+        self.nb_bouteilles_pleines = nb_bouteilles_pleines
+        self.en_chemin = en_chemin
+
+        if nb_bouteilles_pleines+nb_bouteilles_vides > 80:
+                raise ValueError("Le camion ne peut pas transporter plus de 80 bouteilles au total.")
+
+#on créer tous les camions
+
+Camions ={}
+
+for i in range (30):
+    Camions["i"] =  camion((X0_camion,Y0_camion),10,20,True)
+
+print(Camions)
+
+
+
+
 # CLASSE CLIENT
 
 class Client :
