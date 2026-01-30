@@ -113,7 +113,7 @@ class Client :
 
 """ Fonctions et variables de base """
 
-usine={1:[217.876,7653.44,437,0,510.83]}
+usine=Client(1000,217.876,7653.44,0,437,100000,510.83,False)
 
 def distance (a,b) :
     return np.sqrt(abs((a.coord_x-b.coord_x)**2 + (a.coord_y-b.coord_y)**2))
