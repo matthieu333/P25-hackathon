@@ -123,11 +123,11 @@ def tempstrajet (a,b) :
 
 def trouvertmin () : #renvoie [tmin,indice du camion tq tmin] (TROUVE QUEL CAMION ARRIVE EN PREMIER)
     L=[]
-    minimum=Camions[0].tmin
+    minimum=Camions[0].t
     indicemin=0
     for i in range(len(Camions)) :
-        if Camions[i].tmin<minimum :
-            minimum=Camions[i].tmin
+        if Camions[i].t<minimum :
+            minimum=Camions[i].t
             indicemin=i
     return [minimum, i]
 
@@ -135,7 +135,7 @@ resultat_tmin=trouvertmin ()
 
 def update_T() : # Update les tmin de chaque camion
     for i in Camions :
-        i.tmin=i.tmin-resultat_tmin[0]
+        i.t=i.t-resultat_tmin[0]
     return
 
 
