@@ -28,11 +28,40 @@ def dico(url):
             dico_ligne[entete] = valeurs[i]
         liste_dicos.append(dico_ligne)
     return liste_dicos
-
+Longueur = len(dico(URL_CSV))
 print(dico(URL_CSV))
 
 
 """ CODE """
+# CLASSE CLIENT
+
+class Client :
+    def __init__(self, id_client, coord_x, coord_y, init, capacity, consumption):
+        self.id_client = id_client
+        self.coord_x = coord_x
+        self.coord_y = coord_y
+        self.init = init
+        self.capacity = capacity
+        self.consumption = consumption
+
+    def __str__(self):
+        return f"Client {self.id_client} : coord_x={self.coord_x}, coord_y={self.coord_y}, init={self.init}, capacity={self.capacity}, consumption={self.consumption}"
+
+    def liste_clients():
+        dictionnaire = dico(URL_CSV)
+        L_clients = []
+        for i in range (Longueur):
+            cl = Client(
+                id_client = i+1,
+                coord_x = dictionnaire[i]["coord_x"],
+                coord_y = dictionnaire[i]["coord_y"],
+                init = dictionnaire[i]["init"],
+                capacity = dictionnaire[i]["capacity"],
+                consumption = dictionnaire[i]["consumption"]
+            )
+            L_clients.append(cl)
+        return L_clients
+print(Client.liste_clients()[2])
 
 """ Fonctions et variables de base """"
 
