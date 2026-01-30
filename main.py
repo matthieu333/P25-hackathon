@@ -134,6 +134,12 @@ def update_T() : # Update les tmin de chaque camion
     return
 
 
+def update_stock() : #après avoir déterminer tmin, on udpate les stocks des clients et de l'usine pour que les soustractions dans les camions soient les bonnes
+    for client in liste_clients:
+        client.init -= client.consumption * t
+        if client.init < 0:
+            client.init = 0
+    usine.init += production*t 
 
 
 #Fonction qui définit la cible vers lequel le camion dispo va se dirigier, et renvoie les coordonnées de cette cible
