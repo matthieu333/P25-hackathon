@@ -53,8 +53,8 @@ Camions ={}
 
 for i in range (30):
     Camions[i] =  camion(0,0,10,20,0,True,0)
-    if Camion[i].nb_bouteilles_pleines+Camion[i].nb_bouteilles_vides > 80:
-    raise ValueError("Le camion ne peut pas transporter plus de 80 bouteilles au total.")
+    if Camions[i].nb_bouteilles_pleines+Camions[i].nb_bouteilles_vides > 80:
+        raise ValueError("Le camion ne peut pas transporter plus de 80 bouteilles au total.")
 
 print(Camions)
         
@@ -111,7 +111,7 @@ class Client :
 
     
 
-""" Fonctions et variables de base """"
+""" Fonctions et variables de base """
 
 usine={1:[217.876,7653.44,437,0,510.83]}
 
