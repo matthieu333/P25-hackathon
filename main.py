@@ -1,16 +1,17 @@
-from pathlib import Path
+import urllib.request
 
-def lecture(filename):
-    sample = Path(filename).read_text().splitlines()
-    return sample
+# Remplace par ton lien "Raw" copié
+URL_CSV = "https://raw.githubusercontent.com/gaetan-bv2005/P25-hackathon/main/sujet-9-clients.csv"
 
-print(lecture("sujet-9-clients.csv"))
+def lecture_cloud(url):
+    with urllib.request.urlopen(url) as response:
+        # On lit, on décode en texte, et on découpe par lignes
+        content = response.read().decode('utf-8')
+        return content.splitlines()
 
+# Maintenant, n'importe qui avec internet peut lancer ça !
+lignes = lecture_cloud(URL_CSV)
+print(f"Chargement réussi : {len(lignes)} clients trouvés.")
 
-try:
-    with open("C:\\Users\\gaeta\\Documents\\MINES\\Nouveau dossier\\port-energy-sim\\P25-hackathon\\sujet-9-clients.csv", "r", encoding="utf-8") as fichier:
-        lignes = fichier.readlines()
-        for ligne in lignes:
-            print(ligne.strip())
-
+print(lignes)
 
