@@ -139,7 +139,8 @@ def update_stock() : #après avoir déterminer tmin, on udpate les stocks des cl
         client.init -= client.consumption * t
         if client.init < 0:
             client.init = 0
-    usine.init += production*t 
+    usine.init += production*t
+    return
 
 
 #Fonction qui définit la cible vers lequel le camion dispo va se dirigier, et renvoie les coordonnées de cette cible
