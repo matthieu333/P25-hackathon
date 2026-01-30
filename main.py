@@ -36,29 +36,28 @@ print(dico(URL_CSV))
 
 
 
+
 class camion :
-    def __init__(self,coord_x,coord_y,nb_bouteilles_vides,nb_bouteilles_pleines,destination,en_chemin,t):
+    def __init__(self,coord_x,coord_y,nb_bouteilles_vides,nb_bouteilles_pleines,destination,t):
 
         self.coord_x = coord_x#coordonnées de la destination
         self.coord_y = coord_y
         self.nb_bouteilles_vides = nb_bouteilles_vides
         self.nb_bouteilles_pleines = nb_bouteilles_pleines
-        self.destination = destination
         self.en_chemin = en_chemin
         self.t = t
+        
+        if nb_bouteilles_pleines+nb_bouteilles_vides > 80:
+                raise ValueError("Le camion ne peut pas transporter plus de 80 bouteilles au total.")
 
 #on créer tous les camions
 
 Camions ={}
 
 for i in range (30):
-    Camions[i] =  camion(0,0,10,20,0,True,0)
+    Camions[i] =  camion(X0_camion,Y0_camion,10,20,ID,0)
 
 print(Camions)
-        
-if nb_bouteilles_pleines+nb_bouteilles_vides > 80:
-    raise ValueError("Le camion ne peut pas transporter plus de 80 bouteilles au total.")
-
 
 #coordonnées de l'usine
 
@@ -71,9 +70,7 @@ for i in range (30):
     Camions[i].coord_x= ((Clients[i].coord_x)+x_usine)/2
     Camions[i].coord_y= ((Clients[i].coord_y)+y_usine)/2
     Camions[i].destination=Clients[i].id_client
-    Camions[i].t= np.sqrt((Camions[i].coord_x-Clients[i].coord_x)**2+(Camions[i].coord_x-Clients[i].coord_x)**2)/70
-    Camions[i].coord_x= Clients[i].coord_x
-    Camions[i].coord_y= Clients[i].coord_y
+    Camions[i].t= np.sqrt((Camions[i].coord_x-Clients[i].coord_x)**2+(Camions[i].coord_x-Clients[i].coord_x)**2)
 
 
 # CLASSE CLIENT
@@ -121,11 +118,11 @@ def tempstrajet (a,b) :
 
 def trouvertmin () : #renvoie [tmin,indice du camion tq tmin] (TROUVE QUEL CAMION ARRIVE EN PREMIER)
     L=[]
-    minimum=Camions[0].t
+    minimum=Camions[0].tmin
     indicemin=0
     for i in range(len(Camions)) :
-        if Camions[i].t<minimum :
-            minimum=Camions[i].t
+        if Camions[i].tmin<minimum :
+            minimum=Camions[i].tmin
             indicemin=i
     return [minimum, i]
 
@@ -133,9 +130,16 @@ resultat_tmin=trouvertmin ()
 
 def update_T() : # Update les tmin de chaque camion
     for i in Camions :
-        i.t=i.t-resultat_tmin[0]
+        i.tmin=i.tmin-resultat_tmin[0]
     return
 
+
+def update_stock() : #après avoir déterminer tmin, on udpate les stocks des clients et de l'usine pour que les soustractions dans les camions soient les bonnes
+    for client in liste_clients:
+        client.init -= client.consumption * t
+        if client.init < 0:
+            client.init = 0
+    usine.init += production*t 
 
 
 
