@@ -66,7 +66,7 @@ class camion :
 Camions ={}
 
 for i in range (30):
-    Camions["i"] =  camion(X0_camion,Y0_camion,10,20,True,0)
+    Camions[i] =  camion(X0_camion,Y0_camion,10,20,True,0)
 
 print(Camions)
 
