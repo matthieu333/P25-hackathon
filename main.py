@@ -53,11 +53,12 @@ Camions ={}
 
 for i in range (30):
     Camions[i] =  camion(0,0,10,20,0,True,0)
+    if Camion[i].nb_bouteilles_pleines+Camion[i].nb_bouteilles_vides > 80:
+    raise ValueError("Le camion ne peut pas transporter plus de 80 bouteilles au total.")
 
 print(Camions)
         
-if nb_bouteilles_pleines+nb_bouteilles_vides > 80:
-    raise ValueError("Le camion ne peut pas transporter plus de 80 bouteilles au total.")
+
 
 
 #coordonnées de l'usine
