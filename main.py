@@ -1,28 +1,5 @@
-"""from pathlib import Path
-
-def lecture(filename):
-    sample = Path(filename).read_text().splitlines()
-    return sample
-
-print(lecture("sujet-9-clients.csv"))
-
-def dico(filename):
-    #créer une liste de dictionnaires : un dictionnaire par client
-    sample = lecture(filename)
-    liste_dicos = []
-    entetes = sample[0].split(",")
-    for ligne in sample[1:]:
-        valeurs = ligne.split(",")
-        dico_ligne = {}
-        for i, entete in enumerate(entetes):
-            dico_ligne[entete] = valeurs[i]
-        liste_dicos.append(dico_ligne)
-    return liste_dicos
-print(dico("sujet-9-clients.csv"))"""
-
 import urllib.request
 
-# Remplace par ton lien "Raw" copié
 URL_CSV = "https://raw.githubusercontent.com/gaetan-bv2005/P25-hackathon/main/sujet-9-clients.csv"
 
 def lecture_cloud(url):
@@ -30,8 +7,6 @@ def lecture_cloud(url):
         # On lit, on décode en texte, et on découpe par lignes
         content = response.read().decode('utf-8')
         return content.splitlines()
-
-# Maintenant, n'importe qui avec internet peut lancer ça !
 lignes = lecture_cloud(URL_CSV)
 print(f"Chargement réussi : {len(lignes)} clients trouvés.")
 
