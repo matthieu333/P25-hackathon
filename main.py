@@ -76,16 +76,17 @@ for i in range (30):
 # CLASSE CLIENT
 
 class Client :
-    def __init__(self, id_client, coord_x, coord_y, init, capacity, consumption, statut):
+    def __init__(self, id_client, coord_x, coord_y, nb_vides, nb_pleines, capacity, consumption, statut):
         self.id_client = id_client
         self.coord_x = coord_x
         self.coord_y = coord_y
-        self.init = init
+        self.nb_vides = nb_vides
+        self.nb_pleines = nb_pleines
         self.capacity = capacity
         self.consumption = consumption
         self.statut = statut
     def __str__(self):
-        return f"Client {self.id_client} : coord_x={self.coord_x}, coord_y={self.coord_y}, init={self.init}, capacity={self.capacity}, consumption={self.consumption}, statut={self.consumption}"
+        return f"Client {self.id_client} : coord_x={self.coord_x}, coord_y={self.coord_y}, nb_vides={self.nb_vides}, nb_pleines={self.nb_pleines}, capacity={self.capacity}, consumption={self.consumption}, statut={self.consumption}"
 
     def liste_clients():
         dictionnaire = dico(URL_CSV)
@@ -95,7 +96,8 @@ class Client :
                 id_client = i+1,
                 coord_x = dictionnaire[i]["coord_x"],
                 coord_y = dictionnaire[i]["coord_y"],
-                init = dictionnaire[i]["init"],
+                nb_vides = dictionnaire[i]["nb_vides"],
+                nb_pleines = dictionnaire[i]["nb_pleines"],
                 capacity = dictionnaire[i]["capacity"],
                 consumption = dictionnaire[i]["consumption"],
                 statut = False
