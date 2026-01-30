@@ -24,4 +24,5 @@ def dico(url):
             dico_ligne[entete] = valeurs[i]
         liste_dicos.append(dico_ligne)
     return liste_dicos
+
 print(dico(URL_CSV))
