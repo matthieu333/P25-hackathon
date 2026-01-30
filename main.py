@@ -126,7 +126,7 @@ def trouvertmin () : #renvoie [tmin,indice du camion tq tmin] (TROUVE QUEL CAMIO
 
 resultat_tmin=trouvertmin () 
 
-def update_T() :
+def update_T() : # Update les tmin de chaque camion
     for i in Camions :
         i.tmin=i.tmin-resultat_tmin[0]
     return
