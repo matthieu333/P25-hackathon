@@ -71,7 +71,9 @@ for i in range (30):
     Camions[i].coord_x= ((Clients[i].coord_x)+x_usine)/2
     Camions[i].coord_y= ((Clients[i].coord_y)+y_usine)/2
     Camions[i].destination=Clients[i].id_client
-    Camions[i].t= np.sqrt((Camions[i].coord_x-Clients[i].coord_x)**2+(Camions[i].coord_x-Clients[i].coord_x)**2)
+    Camions[i].t= np.sqrt((Camions[i].coord_x-Clients[i].coord_x)**2+(Camions[i].coord_x-Clients[i].coord_x)**2)/70
+    Camions[i].coord_x= Clients[i].coord_x
+    Camions[i].coord_y= Clients[i].coord_y
 
 
 # CLASSE CLIENT
