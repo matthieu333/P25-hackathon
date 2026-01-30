@@ -172,20 +172,19 @@ def cible(liste_clients, cam):
         return (cible_client.coord_x, cible_client.coord_y)
 
 
-nb_itérations = 0
 while nb_itérations < 1000 : #il limite le nombre d'itérations que va réaliser le programme 
     nb_itérations += 1
     resultat_tmin=trouvertmin () #on cherche le camion qui arrive en premier
-    client_livre = resultat_tmin[1].destination #on récupère l'indice de la destination du camion qui arrive en premier
+    client_livre = Camions[resultat_tmin[1]].destination #on récupère l'indice de la destination du camion qui arrive en premier
 
     #gestion des bouteilles pleines
     nombre_bouteilles_pleines_données_par_le_camion = client_livre.capacity-client_livre.nb_pleines #on récupère le nombre de bouteilles pleines que le client doit recevoir
-    nombre_bouteilles_pleines_données_par_le_camion = min(client_livre.capacity-client_livre.nb_pleines,resultat_tmin[1].nb_bouteilles_pleines)
-    resultat_tmin[1].nb_bouteilles_pleines = resultat_tmin[1].nb_bouteilles_pleines - nombre_bouteilles_pleines_données_par_le_camion
+    nombre_bouteilles_pleines_données_par_le_camion = min(client_livre.capacity-client_livre.nb_pleines,Camions[resultat_tmin[1]].nb_bouteilles_pleines)
+    Camions[resultat_tmin[1]].nb_bouteilles_pleines = Camions[resultat_tmin[1]].nb_bouteilles_pleines - nombre_bouteilles_pleines_données_par_le_camion
     client_livre.nb_pleines = client_livre.nb_pleines + nombre_bouteilles_pleines_données_par_le_camion
 
     #gestion des bouteilles vides
-    nombre_bouteilles_vides_récupérées_par_le_camion = min(client_livre.nb_vides,80-resultat_tmin[1].nb_bouteilles_vides-resultat_tmin[1].nb_bouteilles_pleines) #on récupère le nombre de bouteilles vides que le client doit donner
+    nombre_bouteilles_vides_récupérées_par_le_camion = min(client_livre.nb_vides,80-Camions[resultat_tmin[1]].nb_bouteilles_vides-Camions[resultat_tmin[1]].nb_bouteilles_pleines) #on récupère le nombre de bouteilles vides que le client doit donner
     
 
 
@@ -202,7 +201,7 @@ while nb_itérations < 1000 : #il limite le nombre d'itérations que va réalise
     #on gère la livraison / collecte du camion qui arrive en premier
 
 
-    #on gère le déplacement des autres camions 
+    #on gère le déplacement des autres camions  
 
 
 
