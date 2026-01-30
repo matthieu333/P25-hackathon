@@ -34,29 +34,18 @@ print(dico(URL_CSV))
 
 """ CODE """
 
-#DEFINITION DE LA CALSSE CAMION
- #calcul position initiale des camions 
-X_clients = 0
-Y_clients = 0
-for client in D:
-    X_clients += float(client['coord_x'])
-    Y_clients +=float(client['coord_y'])
-X_clients = X_clients/len(lignes)
-Y_clients = Y_clients/len(lignes)
 
-X0_camion = X_clients
-Y0_camion = Y_clients
 
 
 class camion :
-    def __init__(self,coord_x,coord_y,nb_bouteilles_vides,nb_bouteilles_pleines,en_chemin,tmin):
+    def __init__(self,coord_x,coord_y,nb_bouteilles_vides,nb_bouteilles_pleines,destination,t):
 
         self.coord_x = coord_x#coordonnées de la destination
         self.coord_y = coord_y
         self.nb_bouteilles_vides = nb_bouteilles_vides
         self.nb_bouteilles_pleines = nb_bouteilles_pleines
         self.en_chemin = en_chemin
-        self.tmin = tmin
+        self.t = t
         
         if nb_bouteilles_pleines+nb_bouteilles_vides > 80:
                 raise ValueError("Le camion ne peut pas transporter plus de 80 bouteilles au total.")
@@ -66,11 +55,22 @@ class camion :
 Camions ={}
 
 for i in range (30):
-    Camions[i] =  camion(X0_camion,Y0_camion,10,20,True,0)
+    Camions[i] =  camion(X0_camion,Y0_camion,10,20,ID,0)
 
 print(Camions)
 
+#coordonnées de l'usine
 
+x_usine=217.876
+y_usine=6753.44
+
+#positions initiales des camions
+
+for i in range (30):
+    Camions[i].coord_x= ((Clients[i].coord_x)+x_usine)/2
+    Camions[i].coord_y= ((Clients[i].coord_y)+y_usine)/2
+    Camions[i].destination=Clients[i].id_client
+    Camions[i].t= np.sqrt((Camions[i].coord_x-Clients[i].coord_x)**2+(Camions[i].coord_x-Clients[i].coord_x)**2)
 
 
 # CLASSE CLIENT
