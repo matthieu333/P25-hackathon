@@ -51,7 +51,7 @@ Y0_camion = Y_clients
 class camion :
     def __init__(self,coord_x,coord_y,nb_bouteilles_vides,nb_bouteilles_pleines,en_chemin,tmin):
 
-        self.coord_x = coord_x
+        self.coord_x = coord_x#coordonnées de la destination
         self.coord_y = coord_y
         self.nb_bouteilles_vides = nb_bouteilles_vides
         self.nb_bouteilles_pleines = nb_bouteilles_pleines
