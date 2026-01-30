@@ -36,16 +36,16 @@ print(dico(URL_CSV))
 # CLASSE CLIENT
 
 class Client :
-    def __init__(self, id_client, coord_x, coord_y, init, capacity, consumption):
+    def __init__(self, id_client, coord_x, coord_y, init, capacity, consumption, statut):
         self.id_client = id_client
         self.coord_x = coord_x
         self.coord_y = coord_y
         self.init = init
         self.capacity = capacity
         self.consumption = consumption
-
+        self.statut = statut
     def __str__(self):
-        return f"Client {self.id_client} : coord_x={self.coord_x}, coord_y={self.coord_y}, init={self.init}, capacity={self.capacity}, consumption={self.consumption}"
+        return f"Client {self.id_client} : coord_x={self.coord_x}, coord_y={self.coord_y}, init={self.init}, capacity={self.capacity}, consumption={self.consumption}, statut={self.consumption}"
 
     def liste_clients():
         dictionnaire = dico(URL_CSV)
@@ -58,6 +58,7 @@ class Client :
                 init = dictionnaire[i]["init"],
                 capacity = dictionnaire[i]["capacity"],
                 consumption = dictionnaire[i]["consumption"]
+                statut = False
             )
             L_clients.append(cl)
         return L_clients
